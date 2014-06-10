@@ -16,8 +16,7 @@ OFFSETS = {UP: (1, 0),
            LEFT: (0, 1),
            RIGHT: (0, -1)}
 
-
-
+from random import random
 
 
 def merge(line):
@@ -50,18 +49,15 @@ def move_zeros(line):
     return updated_line
 
 
-
-
-
 class TwentyFortyEight:
     """
     Class to run the game logic.
     """
 
     def __init__(self, grid_height, grid_width):
-        self.grid_height=grid_height
-        self.grid_width=grid_width
-        self.grid=[]
+        self.grid_height = grid_height
+        self.grid_width = grid_width
+        self.grid = []
         self.reset()
 
     def reset(self):
@@ -109,15 +105,28 @@ class TwentyFortyEight:
         square.  The tile should be 2 90% of the time and
         4 10% of the time.
         """
-        # replace with your code
-        pass
+        rowm, colm = self.get_ava_index()
+        value = 2 if random() <= 0.90 else 4
+        self.set_tile(rowm, colm, value)
+        print rowm,colm,value
+
+    def get_ava_index(self):
+        """
+
+
+        :return: row,col
+        """
+        for row in range(self.grid_height):
+            for col in range(self.grid_width):
+                if self.grid[row][col]==0:
+                    return row,col
 
     def set_tile(self, row, col, value):
         """
         Set the tile at position row, col to have the given value.
         """
         # replace with your code
-        self.grid[row][col]=value
+        self.grid[row][col] = value
 
     def get_tile(self, row, col):
         """
